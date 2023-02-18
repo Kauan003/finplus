@@ -166,7 +166,7 @@ const dbPass = process.env.DB_PASS
 mongoose.set("strictQuery", true);
 mongoose
 .connect(`mongodb+srv://${dbUSER}:${dbPass}@cluster0.zklrhfu.mongodb.net/?retryWrites=true&w=majority`)
-.then(() => {app.listen(5000, function () {
+.then(() => {app.listen(3000, function () {
   console.log('conectou ao banco de dados');
 });})
 .catch((err) => console.log(err))

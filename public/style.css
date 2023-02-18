@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+}
+header
+{
+    width: 100%;
+    height: 80px;
+    background-color: linear-gradient(to right, rgb(250, 250, 255), rgb(41, 41, 60), rgb(250, 250, 255) );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+.home
+{  
+    margin: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90vw;
+}
+.photo
+{
+    
+    width:600px;
+    height: 600px;
+    border-radius: 50%;
+    margin-bottom: 150px;
+    transform: translateX(-50px);
+    z-index: 1;
+    cursor: pointer;
+}
+.photo a
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.purp
+{
+    
+    width:400px;
+    height: 400px;
+    border-radius:50% ;
+    background-color: #ff4d1c;
+    position: absolute;
+    right:1px;
+   bottom: 250px;
+}
+.elements
+{
+    display: grid;
+    align-items: flex-start;
+    justify-content: center;
+    width: 750px;
+    height: 650px;
+    margin: -50px;
+    background: none;
+    animation: moveRight 1.2s ease-in-out ;
+}
+.imagem
+{
+    animation: moveLeft 1.2s ease-in-out;
+}
+.categorias
+{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px;
+}
+.categorias div
+{
+    width:500px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.categorias li
+{
+    color: rgb(35, 30, 30);
+    list-style-type: none;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 45px;
+}
+.categorias i
+{
+    font-size: 22px;
+    padding: 20px;
+}
+.text
+{
+    color: rgb(43, 43, 43);
+    font-size: 2.2rem;
+    margin-left: 40px;
+    z-index: 2;
+}
+.text h1:nth-child(1)
+{
+    font-size: 1.9rem;
+}
+.buttons button
+{
+    width: 300px;
+    height: 75px;
+    border-radius: 45px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    margin: 20px;
+    background: #f4f3f8;
+    
+}
+.buttons button:nth-child(1)
+{
+    background: #6752ea;
+    color: white;
+}
+.cursor
+{
+    background-color: white;
+    border-radius:50% ;
+    display: block;
+    position: absolute;
+    cursor: none;
+    z-index: 0;
+}
+.experience
+{
+    height: 600px;
+    position: relative;
+    display: grid;
+    justify-content: space-evenly;
+    background-color: #f4f3f8;
+}
+.experience div
+{
+    width: 90vw;
+    height: 200px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content:start;
+    color: gray;
+}
+.experience div span
+{
+    font-size:16px;
+    font-weight: 500;
+}
+.experience div h1
+{
+    font-size: 1.8em;
+    width: 400px;
+    color: rgb(97, 96, 96);
+    z-index: 1;
+}
+.experience div h2
+{
+    font-weight: 500;
+    width: 900px;
+    font-size: 1em;
+    z-index: 1;
+    color: rgb(97, 96, 96) !important; 
+}
+.experience div:hover
+{
+    cursor: none;
+    font-size: 20px;
+    font-weight:bold;
+    color: #2222c3;
+}
+.technologies
+{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px ;
+    grid-row-gap: 50px;
+}
+.technologies div
+{
+    width: 90vw;
+    background-color: none;
+    display: grid;
+}
+.technologies div ol
+{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+.technologies div ol li
+{
+    width: 300px;
+    height: 200px;   
+}
+.technologies div ol li i 
+{
+   
+    font-size: 48px;
+}
+.projects{
+    display: grid;
+    grid-row-gap: 50px;
+    justify-content: center;
+}
+.projects div 
+{
+    width: 80vw;
+    border-radius: 40px ;
+    height: 400px;
+    background-color: gray;   
+}
+.projects button
+{
+    width: 250px;
+    height:60px;
+    border-radius:50px;
+    border: none;
+    background: #6752ea;
+    color: white;
+    font-size: 1.2em;
+}
+.contato
+{
+    width: auto;
+    height: 100%;
+    background-color: #f4f3f8;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.contato .circles
+{
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background-color:#6752ea; ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 50px;
+    animation: moveLeft 1.2s ease-in-out;
+}
+.contato .circles div
+{
+    width: auto;
+    height: 100px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.contato .circles div input
+{
+    width:450px;
+    height: 60px;
+    border-radius:30px;
+    border: none;
+    background-color: #8f80f1;
+    color: white;
+    font-size: 1em;
+    padding: 20px;
+    opacity: 0.6;
+    letter-spacing: 2px;
+    font-weight: 100;
+}
+.contato .circles button
+{
+    width: 200px ;
+    height: 60px;
+    border-radius: 30px;
+    border: none;
+    background-color: white;
+    color: #6752ea;
+    font-weight: 700;
+    cursor: pointer;
+}
+label
+
+.pers_inf
+{
+    animation: moveRight 1.2s ease-in-out ;
+}
+.contato .pers_inf div
+{
+    display: flex;
+}
+.contato .pers_inf .img
+{
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+    background: url("modelo.png");
+    transform: translateX(-40px);
+
+}
+
+.contato .pers_inf .inf
+{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 450px;
+    height: 160px;
+    border: 1px solid gray;
+    border-radius:80px;
+    list-style-type: none;
+    
+}
+.contato .pers_inf div li i
+{
+    font-size: 20px;
+    color: gray;
+    padding: 10px;
+    
+}
+@keyframes moveLeft{
+    0%{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+@keyframes moveRight {
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateX(0px)
+    }
+}
