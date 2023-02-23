@@ -1,141 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <title>Landing Page</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
 </head>
 <body>
-    <header>
-        <nav class="categorias">
-          <div>
-            
-          </div>
-            <div>
-              <li>Sobre Mim</li>
-              <li>Projetos</li>
-              <li>Contato</li>
-              <li><a href="/auth/login.html">login</a></li>
-            </div>
-            <div>
-              <i class="fa-brands fa-linkedin-in"></i>
-              <i class="fa-brands fa-instagram"></i>
-              <i class="fa-brands fa-github"></i>
-            </div>
-        </nav>
-    </header>
-    <section>
-        <div class="home">
-            <div class=" elements">
-               
-                <div class="text">
-                    <h1>Olá! Sou o Kauan.</h1>
-                    <h1>Um <span style="text-decoration: underline; color: #6752ea; cursor: pointer;" > desenvolvedor web</span> em Curitiba</h1>
-                </div>
-                <div class="buttons">
-                    <button>Entrar em contato</button>
-                    <button>Portfolio</button>
-                </div>
+  <nav>
+      <ul>
+        <li>
+          <button onclick="createExtract()">gerar extrato</button>
+        </li>
+        <li>...</li>
+        <li>...</li>
+        <li>...</li>
+        <li>...</li>
+      </ul>
+  </nav>
+  <div class="carteira">
+    <div class="saldos">
+      <div id="divida">
+      
+      
+      </div>
+      <div id="carteira">
+  
+      </div>
+      <div id="sobra">
+  
+      </div>
+    </div>
+    <div class="extrato">
+      <ul id="list">
+        
+      </ul>
+    </div>
+  </div>
 
-            </div>
-            <div class="imagem">
-                <img src="modelo.png" alt="" class="photo">
-                <div class="purp"></div>
-            </div>
-          </div>
-        </div>
-        <div class="info">
-          <div class="experience">
-            <div>
-              <h1> 6 <br><span>Anos de educação</span></h1>
-              <h2>Lnsequat. </h2>
-            </div>
-            <div>
-              <h1> 8+<br><span>Anos de experiência</span> </h1>
-              <h2> Lorem ipsum</h2>
-            </div>
-            <div>
-              <h1> 15+ <br><span>Projetos</span></h1>
-              <h2>Lorem</h2>
-            </div>
-          </div>
-          <div class="technologies">
-                <h1>Minhas Habilidades</h1>
-                <div>
-                    <ol>
-                      <li>
-                        <i class="fa-brands fa-git-alt"></i>
-                        <br> Unix, Git <br> 8 Anos</li>
-                      <li>
-                        <i class="fa-solid fa-database"></i>
-                        <br> SQL(MySQL, PostgreSQL)</li>
-                      <li>
-                        <i class="fa-brands fa-html5"></i>
-                        <br> HTML5/CSS <br> 8 Anos</li>
-                    </ol>
-                    <ol>
-                      <li>
-                        <i class="fa-brands fa-aws"></i> 
-                        <br> AWS</li>
-                      <li>
-                        <i class="fa-brands fa-square-js" style="color: rgb(255, 240, 74);"></i>
-                        <br> Javascript(NodeJS, ReactJS, jQuery)</li>
-                      <li>
-                        <i class="fa-brands fa-python"></i>
-                        <br>  Python(Django)</li>
-                    </ol>
-                </div>
-          </div>
-        </div>
-        <div class="projects">
-          <h1 style="font-size: 40px;">Meus Projetos</h1>
-          <div>
-            
-          </div>
-          <div> 
-
-          </div>
-          <button> Ver Mais</button>
-        </div>
-        <div class="contato">
-          <div class="pers_inf">
-            <h1 style="font-size: 40px; margin-top: 100px;">Ficou interessado? <br>
-            Mande um Oi!</h1>
-              <div class="inf">
-                <div class="img">
-                  <img src="modelo.png" alt="">
-                </div>
-                <div style="display: grid; grid-row-gap: 10px;">
-                  <li><h1 style="font-size: 20px;">Kauan Gonçalves</h1></li>
-                  <li style="color: gray; font-size: 14px;">Desenvolvedor Web</li>
-                  <li style="cursor: pointer;">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-github"></i>
-                  </li>
-                </div>
-              </div>
-          </div>
-          <div class="circles">
-            <form action="http://127.0.0.1:5000/dados" method="post">
-              <div>
-                <div>
-                  <label for="nome"></label>
-                  <input type="text" value ="" name = "nome">
-                </div>
-                <div>
-                  <label for="text"></label>
-                  <input type="text" value= "" name="text">
-                </div>
-                <button type="submit">Enviar mensagem</button>
-              </div>
-            </form>
-          </div>
-        </div>
-    </section>
 </body>
 <script src="script.js"></script>
 </html>
