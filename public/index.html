@@ -9,32 +9,46 @@
 </head>
 <body>
   <nav>
+    <div>
+
+    </div>
       <ul>
         <li>
-          <button onclick="createExtract()">gerar extrato</button>
+          <button onclick="createExtract()">Gerar Extrato</button>
         </li>
-        <li>...</li>
-        <li>...</li>
-        <li>...</li>
-        <li>...</li>
+        <li>
+          <button>Gráficos</button>
+        </li>
+        <li>
+          <button>Transações</button>
+        </li>
+        <li>
+          <button>Projeções</button>
+        </li>
+        <li>
+          <button>Sair</button>
+        </li>
       </ul>
   </nav>
   <div class="carteira">
     <div class="saldos">
-      <div id="divida">
-      
-      
+      <div>
+        <div id="divida" style="color: rgb(136, 28, 84)" > R$ 00 </div>
+        <p>Despesas<p>
       </div>
-      <div id="carteira">
-  
+      <div>
+       <div  id="carteira" style="color: rgb(33, 106, 33)"> R$ 00</div>
+       <p>Saldo</p>
       </div>
-      <div id="sobra">
-  
+      <div>
+        <div id="sobra" style="color: rgb(29, 33, 29)"> R$ 00 </div>
+        <p>Restante</p>
       </div>
     </div>
     <div class="extrato">
+      <h1>Extrato</h1>
       <ul id="list">
-        
+      
       </ul>
     </div>
   </div>

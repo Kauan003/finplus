@@ -12,49 +12,85 @@ body{
 }
 .carteira
 {
-   background-color: rgb(243, 240, 255);
-
+   background-color: rgb(255, 255, 255);
 }
 .saldos
 {
-    display: flex;
+    text-align: start;
+    width: 100%;
+    height: 200px;
+    font-size: 1.35em;
+    background-color: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(213, 213, 213);
 }
 .saldos div
 {
-    width: 200px;
-    height: 100px;
-    background-color: rgb(133, 133, 192);
-    margin: 60px;
-    border-radius: 10px;
+    text-align: start;
+    width: 300px;
+    color: rgb(169, 169, 169);
+    font-weight: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+.saldos div p
+{
+    
+    font-size: 0.5em;
 }
 .extrato
 {
-    
     width: 80%;
     height: 500px;
-  
+    flex-direction: column;
+    margin-left: 40px;
+    margin-top: 20px;
+    color:rgb(29, 33, 29);
 }
 .extrato li
-{
+{   
+    margin: 20px;
+    list-style: none;
     width: 300px;
-    color:rgb(25, 25, 33);
+}
+.carteira div
+{
+    display: flex;
 }
 nav
 {
     width: 20%;
     height: 100vh;
-    border-right: 1px solid gray;
-    display: flex;
+    flex-direction: column;
     justify-content: center;
+    border-right: 1px solid rgb(213, 213, 213);
+}
+nav div img
+{
+    width: 200px;
+    height:200px;
 }
 nav li
 {
+    list-style: none;
     cursor: pointer;
     font-size: 1.5em;
+    width: 100%;
+    text-align: center;
 }
-.carteira div
-{
-    display: flex;
+
+nav li button{
+    width: 100%;
+    padding: 15px;
+    border: none;
+    text-align: start;
+    background: none;
+    text-align: center;
+}
+nav li button:hover{
+    cursor: pointer;
+    background-color: rgb(181, 181, 181);
 }
 input
 {
@@ -68,10 +104,8 @@ input
 }
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
-    
 }
 input[type=number] { 
    -moz-appearance: textfield;
    appearance: textfield;
-
 }
