@@ -27,18 +27,22 @@ function getSald(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-  
-function createExtract(){
-    const sald = getSald(2100,3500)
-    const result = []
+const sald = getSald(2100,3500)
 
+function allExpenses(){
+    const result = []
     for(i=0; i < percents.length; i++){
         result.push(getSald(percents[i], percents2[i]))
     }
-    
-    const expensesValue = calcPercentsOfBalance(result, sald)
-    const expenseTotal = expensesValue.reduce((acc, current)=> acc + current ,0)
 
+    return calcPercentsOfBalance(result, sald)
+}
+
+const expensesValue = allExpenses()
+function createExtract(){
+    
+    
+    const expenseTotal = expensesValue.reduce((acc, current)=> acc + current ,0)
     
     carteira.innerHTML = `R$ ${sald}`
     const valor = sald - expenseTotal
@@ -51,6 +55,9 @@ function createExtract(){
     printExpenses(expensesValue)
     console.log("saldo: " + sald, "despesas:  "  + expenseTotal)
     console.log(categorias, expensesValue)
+
+    console.log(result)
+    
 }
 
 function calcPercentsOfBalance(arr, sald){
@@ -64,4 +71,28 @@ function printExpenses(expensesValue){
         list.textContent = `${categorias[i]} \n R$ ${expensesValue[i]}`
         ul.appendChild(list)
     } 
+}
+
+
+var canvas = document.querySelector('#graph');
+var ctx = canvas.getContext('2d')
+
+const data = {
+    labels: categorias,
+    datasets: [{
+        data: expensesValue,
+        backgroundColor: ['#FF3333', 'blue', 'green', 'orange', 'purple', 'yellow','aqua', 'gray'],
+
+    }]
+};
+
+
+function createGraph(){
+    let myPieChart = new Chart(ctx,{
+        type: 'pie',
+        data: data,
+        options:  {
+       
+        }
+    });
 }

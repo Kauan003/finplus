@@ -17,7 +17,7 @@
           <button onclick="createExtract()">Gerar Extrato</button>
         </li>
         <li>
-          <button>Gráficos</button>
+          <button onclick="createGraph()">Gráficos</button>
         </li>
         <li>
           <button>Transações</button>
@@ -45,14 +45,25 @@
         <p>Restante</p>
       </div>
     </div>
-    <div class="extrato">
+    <div>
       <h1>Extrato</h1>
-      <ul id="list">
-      
-      </ul>
     </div>
+    <div class="extrato">
+     
+      <ul id="list">
+      </ul>
+      <div style="width: 400px; height: 400px;">
+        <canvas id="graph"> 
+  
+        </canvas>
+      </div>
+    </div>
+  
   </div>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="node_modules/chart.js/dist/chart.js"></script>
 <script src="script.js"></script>
+<script src="graphs.js"></script>
 </html>
