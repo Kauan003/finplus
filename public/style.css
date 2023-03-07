@@ -9,10 +9,7 @@
 }
 body{
     display: flex;
-}
-.carteira
-{
-   background-color: rgb(255, 255, 255);
+    background-color: rgb(245, 243, 244);
 }
 .saldos
 {
@@ -20,15 +17,14 @@ body{
     width: 100%;
     height: 200px;
     font-size: 1.35em;
-    background-color: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(213, 213, 213);
+    
 }
 .saldos div
 {
     text-align: start;
     width: 300px;
     color: rgb(169, 169, 169);
-    font-weight: 100;
+    font-weight: 600;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -36,8 +32,9 @@ body{
 }
 .saldos div p
 {
-    
+    color: rgb(58, 58, 58);
     font-size: 0.5em;
+    font-weight: 100;
 }
 .extrato
 {
@@ -60,11 +57,10 @@ body{
 }
 nav
 {
-    width: 20%;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    border-right: 1px solid rgb(213, 213, 213);
+    width: 18%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: rgb(50, 50, 50);
 }
 nav div img
 {
@@ -77,36 +73,26 @@ nav li
     cursor: pointer;
     font-size: 1.5em;
     width: 100%;
-    text-align: center;
+    color: white;
 }
 
 nav li button{
-    width: 100%;
+    width:100%;
     padding: 15px;
     border: none;
+    background: none;
     text-align: start;
-    background: none;
-    text-align: center;
-}
-nav li button:hover{
+    color: white;
+    font-weight: 600;
     cursor: pointer;
-    background-color: rgb(181, 181, 181);
-  
 }
-input
+nav li:hover{
+    background-color: rgb(245, 243, 244);
+    color: rgb(31, 31, 31);
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+nav li button:hover
 {
-    background: none;
-    width: 80%;
-	margin: 0 auto;
-	padding: 10px;
-	border: none;
-	margin-bottom: 10px;
-	border-radius: 50px;
-}
-input[type=number]::-webkit-inner-spin-button { 
-    -webkit-appearance: none;
-}
-input[type=number] { 
-   -moz-appearance: textfield;
-   appearance: textfield;
+    color: black;
 }
