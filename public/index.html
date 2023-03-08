@@ -14,23 +14,32 @@
     </div>
       <ul>
         <li>
+          <ion-icon name="document-text-outline"></ion-icon>
           <button onclick="createExtract()">Gerar Extrato</button>
         </li>
         <li>
+          <ion-icon name="pie-chart-outline"></ion-icon>
           <button onclick="createGraph()">Gráficos</button>
         </li>
         <li>
+          <ion-icon name="cash-outline"></ion-icon>
           <button>Transações</button>
         </li>
         <li>
+          <ion-icon name="analytics-outline"></ion-icon>
           <button>Projeções</button>
         </li>
         <li>
+          <ion-icon name="log-out-outline"></ion-icon>
           <button>Sair</button>
         </li>
       </ul>
   </nav>
+  
   <div class="carteira">
+    <div class="month">
+
+    </div>
     <div class="saldos">
       <div>
         <div id="divida" style="color: rgb(136, 28, 84)"> R$ 00 </div>
@@ -61,8 +70,9 @@
   </div>
 
 </body>
+<script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="node_modules/chart.js/dist/chart.js"></script>
 <script src="script.js"></script>
-<script src="graphs.js"></script>
+<script src="date.js"></script>
 </html>
