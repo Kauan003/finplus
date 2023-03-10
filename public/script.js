@@ -25,7 +25,7 @@ function getSald(min, max) {
 }
 
 const balance = getSald(2100,3500)
-const expensesValue = allExpenses()
+const expensesValue = getExpenses()
 
 function createExtract(){
     const expenseTotal = expensesValue.reduce((acc, current)=> acc + current ,0)
@@ -39,7 +39,7 @@ function createExtract(){
 function calcPercentsOfBalance(arr, balance){
     return arr.map((curr)=> Math.ceil(balance/100 * curr, 1))
 }
-function allExpenses(){
+function getExpenses(){
     const result = []
     for(i=0; i < percents.length; i++){
         result.push(getSald(percents[i], percents2[i]))
