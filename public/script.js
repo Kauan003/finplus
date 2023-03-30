@@ -1,4 +1,4 @@
-const balanceText= document.querySelector('#saldo')
+const balanceText= document.querySelector('#sald')
 const remainingBalanceText = document.querySelector('#sobra')
 const expensesText = document.querySelector('#divida')
 const ul = document.querySelector('#list')
@@ -30,7 +30,7 @@ const expensesValue = getExpenses()
 function createExtract(){
     const expenseTotal = expensesValue.reduce((acc, current)=> acc + current ,0)
     const remainingBalance = balance - expenseTotal
-    balanceText.innerHTML = `R$ ${balance}`
+    balanceText.innerHTML = `<h1>R$ ${balance} </h1>`
     expensesText.innerHTML = `R$ ${expenseTotal}`
     remainingBalanceText.innerHTML = `R$ ${remainingBalance}`
     printExpenses(expensesValue)
@@ -54,8 +54,8 @@ function printExpenses(expensesValue){
         list.textContent = `${categorias[i]} \n R$ ${expensesValue[i]}`
         ul.appendChild(list)
     } 
+    
 }
-
 
 //GRAPHS
 var canvas = document.querySelector('#graph');
@@ -71,11 +71,13 @@ const data = {
 };
 
 function createGraph(){
-    let myPieChart = new Chart(ctx,{
-        type: 'pie',
-        data: data,
-        options:{
-            borderSkipped: "bottom",
-        }
-    });
-}
+    createExtract()
+
+        let myPieChart = new Chart(ctx,{
+            type: 'pie',
+            data: data,
+            options:{
+                borderSkipped: "bottom",
+            }
+        });
+    }

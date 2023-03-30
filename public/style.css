@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
 *
 {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     position: relative;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Prompt', sans-serif;
 }
 body{
     display: flex;
-    background-color: rgb(245, 243, 244);
+    
 }
 .saldos
 {
@@ -22,7 +22,7 @@ body{
 .saldos div
 {
     text-align: start;
-    width: 300px;
+    width: 220px;
     color: rgb(169, 169, 169);
     font-weight: 600;
     flex-direction: column;
@@ -55,10 +55,17 @@ body{
 {
     display: flex;
 }
+.month
+{
+    margin-top: 30px;
+}
 nav
 {
-    width: 15%;
+    height: 100vh;
+    width: 20%;
     border-right: 1px solid rgb(197, 197, 197);
+    background-color: rgb(11, 11, 11);
+    color: white;
 }
 nav div img
 {
@@ -69,10 +76,10 @@ nav li
 {
     list-style: none;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.6em;
     align-items: center;
-    color: rgb(28, 28, 28);
     display: flex;
+    margin-left: 40px;
 }
 
 nav li button{
@@ -81,7 +88,132 @@ nav li button{
     border: none;
     background: none;
     text-align: start;
-    color:  rgb(28, 28, 28);
+    color:  rgb(255, 255, 255);
     font-weight: 550;
     cursor: pointer;
+}
+.sair
+{
+    font-size: 40px;
+    position: absolute;
+    bottom: -500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.grid
+{
+    width: 80%;
+    height: 773px;
+    display: grid;
+    grid-template-columns:30% 70%;
+
+}
+.cards {
+    border-right: 1px solid rgb(231, 231, 231);
+}
+.container 
+{
+    display: grid;
+    grid-template-rows: 36% 36% 28%;
+}
+#sald h1
+ {
+    font-size: 40px;
+    font-weight: 100;
+    color: white;
+    margin: 30px;
+}
+.card
+{
+    background-color: black;
+    display: table-column;
+}
+.buttons
+{
+    margin-left: 30px;
+    display: flex;
+}
+.buttons div
+{
+    width: 120px;
+    height:30px;
+    background-color: rgb(29, 29, 29);
+    border: none;
+    border-radius:5px ;
+    margin-left: 15px;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    
+}
+.values
+{
+    color: white;
+    font-size: 12px;
+    display: flex;
+}
+.values div
+{
+    margin-left: 45px;
+}
+.values span
+{
+
+    font-size: 22px; 
+
+}
+.categories
+{
+    font-size: 14px;
+}
+.categories ul
+{
+    list-style-type: none; 
+}
+.graphs
+{
+    display: grid;
+    grid-template-columns:50% 50%;
+}
+.graphs div 
+{
+    width: 100%;
+    height: 280px;
+    background-color: white;
+}
+.container h1 
+{
+    font-size:20px;
+    font-weight:300;
+    color: rgb(33, 33, 33);
+    margin: 30px;
+}
+.transactions
+{
+    border-top: 1px solid rgb(231, 231, 231);
 }
