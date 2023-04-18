@@ -11,54 +11,7 @@ body{
     display: flex;
     
 }
-.saldos
-{
-    text-align: start;
-    width: 100%;
-    height: 200px;
-    font-size: 1.35em;
-    
-}
-.saldos div
-{
-    text-align: start;
-    width: 220px;
-    color: rgb(169, 169, 169);
-    font-weight: 600;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2em;
-}
-.saldos div p
-{
-    color: rgb(58, 58, 58);
-    font-size: 0.5em;
-    font-weight: 100;
-}
-.extrato
-{
-    width: 80%;
-    height: 500px;
-    display: flex;
-    margin-left: 40px;
-    margin-top: 20px;
-    color:rgb(29, 33, 29);
-}
-.extrato li
-{   
-    margin: 20px;
-    list-style: none;
-    width: 300px;
-}
-.carteira div
-{
-    display: flex;
-}
-.month
-{
-    margin-top: 30px;
-}
+
 nav
 {
     height: 100vh;
@@ -92,36 +45,6 @@ nav li button{
     font-weight: 550;
     cursor: pointer;
 }
-.sair
-{
-    font-size: 40px;
-    position: absolute;
-    bottom: -500px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .grid
 {
     width: 80%;
@@ -183,18 +106,22 @@ nav li button{
 }
 .values span
 {
-
     font-size: 22px; 
-
+}
+.spendings{
+    height: 280px;
+    font-size: 14px;
+    display: grid;
+    justify-content: center;
 }
 .categories
 {
+    height: 280px;
     font-size: 14px;
+    display: grid;
+    justify-content: center;
 }
-.categories ul
-{
-    list-style-type: none; 
-}
+
 .graphs
 {
     display: grid;
@@ -203,7 +130,6 @@ nav li button{
 .graphs div 
 {
     width: 100%;
-    height: 280px;
     background-color: white;
 }
 .container h1 
@@ -211,9 +137,31 @@ nav li button{
     font-size:20px;
     font-weight:300;
     color: rgb(33, 33, 33);
-    margin: 30px;
+    margin-top: 30px;
 }
 .transactions
 {
     border-top: 1px solid rgb(231, 231, 231);
+}
+.bar{
+    display: flex;
+    height: 12px;
+}
+.bar div{
+  border-radius: 2px;
+    margin: 2px;
+}
+.categories ul {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: start;
+    align-items: center;
+    text-align: start;
+    list-style-type: none;
+}
+.categories ul li {
+    margin:5px;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 4px;
 }

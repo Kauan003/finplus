@@ -1,83 +1,117 @@
-const balanceText= document.querySelector('#sald')
-const remainingBalanceText = document.querySelector('#sobra')
-const expensesText = document.querySelector('#divida')
-const ul = document.querySelector('#list')
+const balanceEl = document.querySelector('#sald');
+const remainingBalanceEl = document.querySelector('#sobra');
+const expensesEl = document.querySelector('#divida');
+const listEl = document.querySelector('.list');
+const barEl = document.querySelector('.bar');
 
-const Spending = [
-    {type: "Mercado", percent: "16", percent2: "29"}, 
-    {type: "Saúde", percent: "11", percent2: "16"},
-    {type: "Lazer", percent: "8", percent2: "14"},
-    {type: "Transporte", percent:"9", percent2: "13" },
-    {type: "Restaurante", percent:"11", percent2: "17"},
-    {type: "Viajem",percent: "12", percent2: "18"}, 
-    {type: "Imposto", percent: "3", percent2: "7"},
-    {type: "Outros", percent: "3", percent2: "5"}
-]
+const spending = [
+  {type: "Mercado", percent: "31", color: '#FFD700'},
+  {type: "Saúde", percent: "16", color: '#FFA500'},
+  {type: "Lazer", percent: "12", color: '#FF6347'},
+  {type: "Transporte", percent:"9", color: '#4169E1'},
+  {type: "Restaurante", percent:"8", color: '#556B2F'},
+  {type: "Viajem", percent: "7", color: '#708090'},
+  {type: "Imposto", percent: "5", color: '#000000'},
+  {type: "Outros", percent: "12", color: '#DCDCDC'}
+];
 
-const percents = Spending.map(( {percent})=>{ return percent }, "")
-const percents2 = Spending.map(( {percent2})=>{return percent2}, "")
-const categorias = Spending.map(( {type})=>{return type}, "")
+const percents = spending.map(({percent}) => parseInt(percent, 10));
+const categories = spending.map(({type}) => type);
+const colors = spending.map(({color}) => color);
 
 function getSald(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min);
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const balance = getSald(2100,3500)
-const expensesValue = getExpenses()
+const balance = getSald(2100, 3500);
+const expenseTotal = getSald(2100, 3500);
+const remainingBalance = balance - expenseTotal;
+const expensesValues = percents.map((arr)=>{return expenseTotal * arr /100})
 
-function createExtract(){
-    const expenseTotal = expensesValue.reduce((acc, current)=> acc + current ,0)
-    const remainingBalance = balance - expenseTotal
-    balanceText.innerHTML = `<h1>R$ ${balance} </h1>`
-    expensesText.innerHTML = `R$ ${expenseTotal}`
-    remainingBalanceText.innerHTML = `R$ ${remainingBalance}`
-    printExpenses(expensesValue)
-}
 
-function calcPercentsOfBalance(arr, balance){
-    return arr.map((curr)=> Math.ceil(balance/100 * curr, 1))
-}
-function getExpenses(){
-    const result = []
-    for(i=0; i < percents.length; i++){
-        result.push(getSald(percents[i], percents2[i]))
-    }
-    return calcPercentsOfBalance(result, balance)
+function createExtract() {
+  balanceEl.innerHTML = `<h1>R$ ${balance} </h1>`;
+  expensesEl.innerHTML = `R$ ${expenseTotal}`;
+  remainingBalanceEl.innerHTML = `R$ ${remainingBalance}`;
+  printExpenses();
 }
 
-function printExpenses(expensesValue){
-    ul.innerHTML = ""
-    for(i=0;i < categorias.length; i++){
-        const list = document.createElement('li')
-        list.textContent = `${categorias[i]} \n R$ ${expensesValue[i]}`
-        ul.appendChild(list)
-    } 
-    
+function printExpenses() {
+  listEl.innerHTML = "";
+  barEl.innerHTML = "";
+
+  const WIDTH_MULTIPLIER = 3;
+
+  for (let i = 0; i < categories.length; i++) {
+    const listItem = document.createElement('li');
+    const barColor = document.createElement('div');
+
+    const barWidth = percents[i] * WIDTH_MULTIPLIER;
+
+    barColor.style.width = `${barWidth}px`;
+    barColor.style.backgroundColor = colors[i];
+
+    listItem.textContent = `${categories[i]} ${percents[i]}%`;
+
+    listEl.appendChild(listItem);
+    barEl.appendChild(barColor);
+  }
 }
+
 
 //GRAPHS
 var canvas = document.querySelector('#graph');
 var ctx = canvas.getContext('2d')
 
-const data = {
-    labels: categorias,
-    datasets: [{
-        data: expensesValue,
-        backgroundColor: ['#FF3333', 'blue', 'green', 'orange', 'purple', 'yellow','aqua', 'gray'],
-
-    }]
+var data = {
+  labels: ["S", "M", "T", "W", "T","F","S"],
+  datasets: [
+      {
+          label: "This Week",
+          backgroundColor: "#FFD700",
+          data: [50, 30, 40, 45, 35, 40, 10]
+      },
+      {
+          label: "Last Week",
+          backgroundColor: "#DCDCDC",
+          data: [80, 60, 70, 55, 75, 20, 50]
+      }
+  ]
 };
 
-function createGraph(){
-    createExtract()
+// Configuração das opções do gráfico
+var options = {
+  title: {
+      display: false,
+      text: 'Gastos por Dia da Semana'
+  },
+  legend: { 
+    position: 'top',
+    labels: {
+      fontColor: '#333',
+      usePointStyle: true
+    } 
+  },
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero:true,
+              callback: function(value, index, values) {
+                  return 'R$' + value;
+              }
+          }
+      }]
+  }
+};
 
-        let myPieChart = new Chart(ctx,{
-            type: 'pie',
-            data: data,
-            options:{
-                borderSkipped: "bottom",
-            }
-        });
+
+
+function createGraph(){
+    myChart = new Chart(ctx, {
+      type: 'bar',
+      data: data,
+      options: {}
+  });
     }
