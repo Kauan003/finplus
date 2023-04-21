@@ -32,9 +32,9 @@ const expensesValues = percents.map((arr)=>{return expenseTotal * arr /100})
 
 
 function createExtract() {
-  balanceEl.innerHTML = `<h1>R$ ${balance} </h1>`;
-  expensesEl.innerHTML = `R$ ${expenseTotal}`;
-  remainingBalanceEl.innerHTML = `R$ ${remainingBalance}`;
+  balanceEl.innerHTML = `<h1>R$ ${balance},00 </h1>`;
+  expensesEl.innerHTML = `R$ ${expenseTotal},00`;
+  remainingBalanceEl.innerHTML = `R$ ${remainingBalance},00`;
   printExpenses();
 }
 
@@ -47,16 +47,22 @@ function printExpenses() {
   for (let i = 0; i < categories.length; i++) {
     const listItem = document.createElement('li');
     const barColor = document.createElement('div');
+    const valueBar = document.createElement('p')
+    const categoriesColor = document.createElement('div')
 
     const barWidth = percents[i] * WIDTH_MULTIPLIER;
 
     barColor.style.width = `${barWidth}px`;
     barColor.style.backgroundColor = colors[i];
+    categoriesColor.style.backgroundColor = colors[i];
 
     listItem.textContent = `${categories[i]} ${percents[i]}%`;
+    valueBar.textContent = `R$${expensesValues[i]}`
 
     listEl.appendChild(listItem);
     barEl.appendChild(barColor);
+    barColor.appendChild(valueBar)
+    listItem.appendChild(categoriesColor)
   }
 }
 
