@@ -8,7 +8,7 @@
   <title>Finplus</title>
 </head>
 <body>
-  <nav>
+  <div class="containerBar">
     <div>
       <H1 style="margin:50px;">FIN.PLUS</H1>
       <ion-icon name=""></ion-icon>
@@ -16,22 +16,26 @@
       <ul>
         <li>
           <box-icon name='credit-card-front' color="white"></box-icon>
-          <button onclick="createExtract()">Simular Conta</button>
+          <button onclick="createExtract()">Simulate Account</button>
         </li>
         <li>
           <box-icon type='solid' name='bar-chart-alt-2' color="white"></box-icon>
-          <button onclick="createGraph()">Gráficos</button>
+          <button onclick="createGraph()">Graphs</button>
         </li>
         <li>
           <box-icon name='transfer' color="white"></box-icon>
-          <button>Transações</button>
+          <button onclick="createTransactions()">Transactions</button>
         </li>
         <li>
           <box-icon name='stats' color="white"></box-icon>
-          <button>Projeções</button>
+          <button>Projections</button>
         </li>
+
       </ul>
-  </nav>
+      <div>
+        <img src="fpluss.png" alt="">
+      </div>
+  </div>
   <div class="grid">
     <div class="cards">
 
@@ -42,12 +46,12 @@
           <h1>R$ 0.0</h1>
         </div>
         <div class="buttons"> 
-          <div><box-icon name='up-arrow-alt' color="white" ></box-icon> TRANSFERIR</div>
-          <div><box-icon name='down-arrow-alt' color="white" size="sm"></box-icon> RECEBER</div>
+          <div><box-icon name='up-arrow-alt' color="white" ></box-icon> TRANSFER</div>
+          <div><box-icon name='down-arrow-alt' color="white" size="sm"></box-icon> REQUEST</div>
         </div>
         <div class="values" style="margin-top: 40px;">
-          <div> Dividas <br> <span id="divida"> R$ 0.0</span></div>
-          <div> Restante <br> <span id="sobra"> R$ 0.0</span></div>
+          <div> Income <br> <span id="divida"> $ 0.0</span></div>
+          <div> Outcome <br> <span id="sobra"> $ 0.0</span></div>
         </div>
       </div>
       <div class="graphs">
@@ -70,7 +74,9 @@
       </div>
       <div class="transactions">
         <h1>Transactions</h1>
-        
+        <ul class="transactionsList">
+          
+        </ul>
       </div>
     </div>
   </div>
@@ -80,5 +86,4 @@
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
-<script src="date.js"></script>
 </html>

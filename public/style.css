@@ -9,23 +9,26 @@
 }
 body{
     display: flex;
-    
+    height: 100vh;
 }
 
-nav
+.containerBar
 {
-    height: 100vh;
+    height: 100%;
     width: 20%;
     border-right: 1px solid rgb(197, 197, 197);
     background-color: rgb(11, 11, 11);
     color: white;
+    display: table-column;
+
 }
-nav div img
-{
-    width: 200px;
-    height:200px;
+.containerBar div {
+    height: 100px;
 }
-nav li
+.containerBar ul {
+    height: 300px;
+}
+.containerBar li
 {
     list-style: none;
     cursor: pointer;
@@ -35,7 +38,7 @@ nav li
     margin-left: 40px;
 }
 
-nav li button{
+.containerBar li button{
     width:100%;
     padding: 15px;
     border: none;
@@ -44,6 +47,10 @@ nav li button{
     color:  rgb(255, 255, 255);
     font-weight: 550;
     cursor: pointer;
+}
+.containerBar img {
+    width: 320px;
+    height: 250px;
 }
 .grid
 {
@@ -143,6 +150,10 @@ nav li button{
 {
     border-top: 1px solid rgb(231, 231, 231);
 }
+.transactions h1
+{
+    margin:30px;
+}
 .bar{
     display: flex;
     height: 2px;
@@ -213,4 +224,15 @@ nav li button{
     height: 8px;
     margin: 10px;
     border-radius: 50%;
+}
+.transactionsList {
+    list-style-type:none;
+    margin: 15px;
+}
+.transactionsList li{
+    list-style-type:none;
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    font-size: 0.9em;
 }

@@ -3,18 +3,28 @@ const remainingBalanceEl = document.querySelector('#sobra');
 const expensesEl = document.querySelector('#divida');
 const listEl = document.querySelector('.list');
 const barEl = document.querySelector('.bar');
+const transactionsEl = document.querySelector('.transactions')
+const transactionsList = document.querySelector('.transactionsList')
 
 const spending = [
-  {type: "Mercado", percent: "31", color: '#FFD700'},
-  {type: "Saúde", percent: "16", color: '#FFA500'},
-  {type: "Lazer", percent: "12", color: '#FF6347'},
-  {type: "Transporte", percent:"9", color: '#4169E1'},
-  {type: "Restaurante", percent:"8", color: '#556B2F'},
-  {type: "Viajem", percent: "7", color: '#708090'},
-  {type: "Imposto", percent: "5", color: '#000000'},
-  {type: "Outros", percent: "12", color: '#DCDCDC'}
+  {type: "Market", percent: "31", color: '#FFD700'},
+  {type: "Medicine", percent: "16", color: '#FFA500'},
+  {type: "Entertainment", percent: "12", color: '#FF6347'},
+  {type: "Transport", percent:"9", color: '#4169E1'},
+  {type: "Restaurant", percent:"8", color: '#556B2F'},
+  {type: "Travel", percent: "7", color: '#708090'},
+  {type: "Tax", percent: "5", color: '#000000'},
+  {type: "Others", percent: "12", color: '#DCDCDC'}
 ];
 
+const transactions = [
+  {company:"Uber", date:"Apr 11, 2023, 16:35 PM", category:"Transport", value:"$ 12.75"},
+  {company:"Latam Airlines", date:"Apr 9, 2023, 8:35 AM", category:"Travel", value:"$ 465.00"},
+  {company:"Domino's Pizza", date:"Apr 9, 2023, 13:12 PM", category:"Restaurant", value:"$ 68.25"},
+  {company:"Angeloni", date:"Apr 8, 2023, 11:23 AM", category:"Market", value:"$ 268.10"}
+
+]
+ 
 const percents = spending.map(({percent}) => parseInt(percent, 10));
 const categories = spending.map(({type}) => type);
 const colors = spending.map(({color}) => color);
@@ -32,9 +42,9 @@ const expensesValues = percents.map((arr)=>{return expenseTotal * arr /100})
 
 
 function createExtract() {
-  balanceEl.innerHTML = `<h1>R$ ${balance},00 </h1>`;
-  expensesEl.innerHTML = `R$ ${expenseTotal},00`;
-  remainingBalanceEl.innerHTML = `R$ ${remainingBalance},00`;
+  balanceEl.innerHTML = `<h1>$ ${balance}.00 </h1>`;
+  expensesEl.innerHTML = `$ ${expenseTotal}.00`;
+  remainingBalanceEl.innerHTML = `$ ${remainingBalance}.00`;
   printExpenses();
 }
 
@@ -45,7 +55,7 @@ function printExpenses() {
   const WIDTH_MULTIPLIER = 3;
 
   for (let i = 0; i < categories.length; i++) {
-    const listItem = document.createElement('li');
+    const listItems = document.createElement('li');
     const barColor = document.createElement('div');
     const valueBar = document.createElement('p')
     const categoriesColor = document.createElement('div')
@@ -56,16 +66,28 @@ function printExpenses() {
     barColor.style.backgroundColor = colors[i];
     categoriesColor.style.backgroundColor = colors[i];
 
-    listItem.textContent = `${categories[i]} ${percents[i]}%`;
-    valueBar.textContent = `R$${expensesValues[i]}`
+    listItems.textContent = `${categories[i]} ${percents[i]}%`;
+    valueBar.textContent = `$${expensesValues[i]}`
 
-    listEl.appendChild(listItem);
+    listEl.appendChild(listItems);
     barEl.appendChild(barColor);
     barColor.appendChild(valueBar)
-    listItem.appendChild(categoriesColor)
+    listItems.appendChild(categoriesColor)
   }
 }
 
+function createTransactions(){
+  transactionsList.innerHTML = ""
+
+  transactions.forEach((item)=>{
+    const listItems = document.createElement('li')
+    const texto = document.createTextNode(item.company+ " "+ item.date+ " " +item.category + " " +item.value) 
+    listItems.appendChild(texto)
+    transactionsList.appendChild(listItems)
+  
+  })
+
+}
 
 //GRAPHS
 var canvas = document.querySelector('#graph');
