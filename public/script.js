@@ -24,7 +24,14 @@ const transactions = [
   {company:"Angeloni", date:"Apr 8, 2023, 11:23 AM", category:"Market", value:"$ 268.10"}
 
 ]
- 
+const icons = [
+  `<box-icon type='solid' name='car'></box-icon>`,
+  `<box-icon type='solid' name='plane-alt'></box-icon>`,
+  `<box-icon name='restaurant'></box-icon>`,
+  `<box-icon name='store-alt' type='solid' ></box-icon>`
+]
+
+
 const percents = spending.map(({percent}) => parseInt(percent, 10));
 const categories = spending.map(({type}) => type);
 const colors = spending.map(({color}) => color);
@@ -71,22 +78,25 @@ function printExpenses() {
 
     listEl.appendChild(listItems);
     barEl.appendChild(barColor);
-    barColor.appendChild(valueBar)
-    listItems.appendChild(categoriesColor)
+    barColor.appendChild(valueBar);
+    listItems.appendChild(categoriesColor);
   }
 }
 
 function createTransactions(){
   transactionsList.innerHTML = ""
-
-  transactions.forEach((item)=>{
-    const listItems = document.createElement('li')
-    const texto = document.createTextNode(item.company+ " "+ item.date+ " " +item.category + " " +item.value) 
-    listItems.appendChild(texto)
-    transactionsList.appendChild(listItems)
   
-  })
+  for(let i = 0; i < transactions.length; i++){
+    const textTransactions = document.createElement('li'); 
 
+    textTransactions.innerHTML = ` 
+    <p>${icons[i]}  ${transactions[i].company}</p>
+     <p>${transactions[i].date}</p>
+      <p>${transactions[i].category}</p>
+       <p>${transactions[i].value}</p>`
+
+      transactionsList.appendChild(textTransactions);
+  }
 }
 
 //GRAPHS
