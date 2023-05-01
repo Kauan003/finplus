@@ -7,14 +7,14 @@ const transactionsEl = document.querySelector('.transactions')
 const transactionsList = document.querySelector('.transactionsList')
 
 const spending = [
-  {type: "Market", percent: "31", color: '#FFD700'},
-  {type: "Medicine", percent: "16", color: '#FFA500'},
-  {type: "Entertainment", percent: "12", color: '#FF6347'},
-  {type: "Transport", percent:"9", color: '#4169E1'},
-  {type: "Restaurant", percent:"8", color: '#556B2F'},
-  {type: "Travel", percent: "7", color: '#708090'},
-  {type: "Tax", percent: "5", color: '#000000'},
-  {type: "Others", percent: "12", color: '#DCDCDC'}
+  {type: "Market", percentDebit: "31", percentCredit: "15", percentCompany: "15", color: '#FFD700'},
+  {type: "Medicine", percentDebit: "16", percentCredit: "5", percentCompany: "0", color: '#FFA500'},
+  {type: "Entertainment", percentDebit: "12", percentCredit: "22", percentCompany: "10", color: '#FF6347'},
+  {type: "Transport", percentDebit:"9", percentCredit: "8", percentCompany: "28", color: '#4169E1'},
+  {type: "Restaurant", percentDebit:"8", percentCredit: "20", percentCompany: "0", color: '#556B2F'},
+  {type: "Travel", percentDebit: "7", percentCredit: "6", percentCompany: "0", color: '#708090'},
+  {type: "Tax", percentDebit: "5", percentCredit: "6", percentCompany: "16", color: '#000000'},
+  {type: "Others", percentDebit: "12", percentCredit: "8", percentCompany: "30", color: '#DCDCDC'}
 ];
 
 const transactions = [
@@ -32,7 +32,9 @@ const icons = [
 ]
 
 
-const percents = spending.map(({percent}) => parseInt(percent, 10));
+const percentsDebit = spending.map(({percentDebit}) => parseInt(percentDebit, 10));
+const percentsCredit = spending.map(({percentCredit}) => parseInt(percentCredit, 10));
+const percentsCompany = spending.map(({percentCompany}) => parseInt(percentCompany, 10));
 const categories = spending.map(({type}) => type);
 const colors = spending.map(({color}) => color);
 
@@ -43,19 +45,31 @@ function getSald(min, max) {
 }
 
 const balance = getSald(2100, 3500);
-const expenseTotal = getSald(2100, 3500);
-const remainingBalance = balance - expenseTotal;
-const expensesValues = percents.map((arr)=>{return expenseTotal * arr /100})
+const expenseDebitTotal = getSald(2100, 3500);
+const remainingBalance = balance - expenseDebitTotal;
+const expensesDebit = percentsDebit.map((arr)=>{return expenseDebitTotal * arr /100})
 
+const balanceCredit = getSald(4000,5500)
+const expenseCreditTotal = getSald(3800, 4100);
+const remainingCreditBalance = balanceCredit - expenseCreditTotal;  
+const expensesCredit = percentsCredit.map((arr)=>{return expenseCreditTotal * arr /100})
+
+const balanceCompanyCard = getSald(14000,22000)
+const expenseCompanyCardTotal = getSald(12000, 16000);
+const remainingCompanyCardBalance = balanceCompanyCard - expenseCompanyCardTotal; 
+const expensesCompanyCard = percentsCompany.map((arr)=>{return expenseCompanyCardTotal * arr /100})
 
 function createExtract() {
+  walletValues(balance, remainingBalance, expenseTotal)
+  printExpenses(expensesDebit, percentsDebit);
+}
+function walletValues(balance, remainingBalance, expenseTotal){
   balanceEl.innerHTML = `<h1>$ ${balance}.00 </h1>`;
   expensesEl.innerHTML = `$ ${expenseTotal}.00`;
   remainingBalanceEl.innerHTML = `$ ${remainingBalance}.00`;
-  printExpenses();
 }
 
-function printExpenses() {
+function printExpenses(expenses,percents) {
   listEl.innerHTML = "";
   barEl.innerHTML = "";
 
@@ -74,7 +88,7 @@ function printExpenses() {
     categoriesColor.style.backgroundColor = colors[i];
 
     listItems.textContent = `${categories[i]} ${percents[i]}%`;
-    valueBar.textContent = `$${expensesValues[i]}`
+    valueBar.textContent = `$${expenses[i]}`
 
     listEl.appendChild(listItems);
     barEl.appendChild(barColor);
@@ -105,12 +119,20 @@ function showCard(card){
   const cardType = card.getAttribute("data-card")
   if(cardType === "debit"){
     elCurrentCard.style.backgroundImage= "url(./images/DebitCard.png)"
+    walletValues(balance, remainingBalance, expenseDebitTotal)
+    printExpenses(expensesDebit, percentsDebit);
   }
   if(cardType === "credit"){
     elCurrentCard.style.backgroundImage= "url(./images/CreditCard.png)"
+
+    walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance)
+    printExpenses(expensesCredit, percentsCredit);
   }
   if(cardType === "company"){
     elCurrentCard.style.backgroundImage= "url(./images/CompanyCard.png)"
+   
+    walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance)
+    printExpenses(expensesCompanyCard, percentsCompany )
   }
 }
 

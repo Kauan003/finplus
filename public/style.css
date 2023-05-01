@@ -14,7 +14,7 @@ body{
 
 .containerBar
 {
-    height: 900px;
+    height: 800px;
     width: 20%;
     border-right: 1px solid rgb(197, 197, 197);
     background-color: rgb(11, 11, 11);
@@ -78,8 +78,6 @@ body{
     cursor: pointer;
     box-shadow: 5px 5px 14px;
     border-radius: 12px;
-
-
 }
 .container 
 {
@@ -107,8 +105,21 @@ body{
 {
     border-radius: 12px;
     width: 400px;
+    animation: effect ease-in-out 2s;
     height: 200px;
 }
+
+@keyframes effect {
+    0%{
+        opacity: 0.1;
+        transform: translate(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
 .buttons
 {
     margin-left: 30px;
@@ -157,7 +168,6 @@ body{
     display: grid;
     justify-content: center;
 }
-
 .graphs
 {
     display: grid;
