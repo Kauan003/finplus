@@ -5,6 +5,7 @@ const listEl = document.querySelector('.list');
 const barEl = document.querySelector('.bar');
 const transactionsEl = document.querySelector('.transactions')
 const transactionsList = document.querySelector('.transactionsList')
+const CurrentCardEl = document.querySelector('.currentCard')
 
 const spending = [
   {type: "Market", percentDebit: "31", percentCredit: "15", percentCompany: "15", color: '#FFD700'},
@@ -60,10 +61,17 @@ const remainingCompanyCardBalance = balanceCompanyCard - expenseCompanyCardTotal
 const expensesCompanyCard = percentsCompany.map((arr)=>{return expenseCompanyCardTotal * arr /100})
 
 function createExtract() {
-  walletValues(balance, remainingBalance, expenseTotal)
+  walletValues(balance, remainingBalance, expenseDebitTotal)
   printExpenses(expensesDebit, percentsDebit);
 }
-function walletValues(balance, remainingBalance, expenseTotal){
+
+const debitCardImage = "url(./images/DebitCard.png)"
+const creditCardImage = "url(./images/creditCard.png)"
+const companyCardImage = "url(./images/companyCard.png)"
+
+function walletValues(balance, remainingBalance, expenseTotal, cardImage){
+  CurrentCardEl.style.backgroundImage= debitCardImage
+  CurrentCardEl.style.backgroundImage= cardImage
   balanceEl.innerHTML = `<h1>$ ${balance}.00 </h1>`;
   expensesEl.innerHTML = `$ ${expenseTotal}.00`;
   remainingBalanceEl.innerHTML = `$ ${remainingBalance}.00`;
@@ -113,48 +121,54 @@ function createTransactions(){
   }
 }
 
-const elCurrentCard = document.querySelector('.currentCard')
-
 function showCard(card){
   const cardType = card.getAttribute("data-card")
   if(cardType === "debit"){
-    elCurrentCard.style.backgroundImage= "url(./images/DebitCard.png)"
-    walletValues(balance, remainingBalance, expenseDebitTotal)
+    walletValues(balance, remainingBalance, expenseDebitTotal, debitCardImage)
     printExpenses(expensesDebit, percentsDebit);
+    createTransactions()
+
+    if(myChart != null){
+      myChart.destroy()
+    }
+    Graph(thisWeekSpendingsDebit, lastWeekSpendingsDebit)
+
+    
   }
   if(cardType === "credit"){
-    elCurrentCard.style.backgroundImage= "url(./images/CreditCard.png)"
-
-    walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance)
+    walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance, creditCardImage)
     printExpenses(expensesCredit, percentsCredit);
+    
+    if(myChart != null){
+      myChart.destroy()
+    }
+    Graph(thisWeekSpendingsCredit, lastWeekSpendingsCredit)
+    
   }
   if(cardType === "company"){
-    elCurrentCard.style.backgroundImage= "url(./images/CompanyCard.png)"
-   
-    walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance)
+    walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance, companyCardImage)
     printExpenses(expensesCompanyCard, percentsCompany )
+
+    if(myChart != null){
+      myChart.destroy()
+    }
+    Graph(thisWeekSpendingsCompany, lastWeekSpendingsCompany)
   }
 }
 
 //GRAPHS
 var canvas = document.querySelector('#graph');
 var ctx = canvas.getContext('2d')
+myChart = null
 
-var data = {
-  labels: ["S", "M", "T", "W", "T","F","S"],
-  datasets: [
-      {
-          label: "This Week",
-          backgroundColor: "#FFD700",
-          data: [50, 30, 40, 45, 35, 40, 10]
-      },
-      {
-          label: "Last Week",
-          backgroundColor: "#DCDCDC",
-          data: [80, 60, 70, 55, 75, 20, 50]
-      }
-  ]
-};
+const thisWeekSpendingsDebit = [200, 100, 150, 200, 80,300, 400]
+const lastWeekSpendingsDebit = [120, 80, 250, 60, 100,300, 200]
+
+const thisWeekSpendingsCredit = [350, 200, 280, 200, 220,400, 300]
+const lastWeekSpendingsCredit = [400, 180, 350, 120, 100,300, 600]
+
+const thisWeekSpendingsCompany = [720, 515, 620, 1200, 1550,1220, 2300]
+const lastWeekSpendingsCompany = [820, 780, 600, 1150, 900,1000, 2100]
 
 // Configuração das opções do gráfico
 var options = {
@@ -181,12 +195,26 @@ var options = {
   }
 };
 
-
-
-function createGraph(){
-    myChart = new Chart(ctx, {
-      type: 'bar',
-      data: data,
-      options: {}
-  });
-    }
+function Graph(thisWeekSpendings, lastWeekSpendings){
+ data = {
+    labels: ["S", "M", "T", "W", "T","F","S"],
+    datasets: [
+        {
+            label: "This Week",
+            backgroundColor: "#FFD700",
+            data:thisWeekSpendings
+        },
+        {
+            label: "Last Week",
+            backgroundColor: "#DCDCDC",
+            data: lastWeekSpendings
+        }
+    ]
+  };
+  config = {
+    type: 'bar',
+    data: data,
+    options: {}
+}
+myChart = new Chart(ctx, config);
+}
