@@ -99,6 +99,21 @@ function createTransactions(){
   }
 }
 
+const elCurrentCard = document.querySelector('.currentCard')
+
+function showCard(card){
+  const cardType = card.getAttribute("data-card")
+  if(cardType === "debit"){
+    elCurrentCard.style.backgroundImage= "url(./images/DebitCard.png)"
+  }
+  if(cardType === "credit"){
+    elCurrentCard.style.backgroundImage= "url(./images/CreditCard.png)"
+  }
+  if(cardType === "company"){
+    elCurrentCard.style.backgroundImage= "url(./images/CompanyCard.png)"
+  }
+}
+
 //GRAPHS
 var canvas = document.querySelector('#graph');
 var ctx = canvas.getContext('2d')

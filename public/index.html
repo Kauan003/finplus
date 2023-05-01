@@ -28,30 +28,46 @@
         </li>
         <li>
           <box-icon name='stats' color="white"></box-icon>
-          <button>Projections</button>
+          <button>Cards</button>
         </li>
 
       </ul>
       <div>
-        <img src="fpluss.png" alt="">
+        <img src="./images/fpluss.png" alt="">
       </div>
   </div>
   <div class="grid">
     <div class="cards">
-
+      <h1>Debit Card</h1>
+      <div class="cardImage" data-card="debit" onclick="showCard(this)">
+        <img src="./images/DebitCard.png" alt="">
+      </div>
+      <h1>Credit Card</h1>
+      <div class="cardImage" data-card="credit" onclick="showCard(this)">
+        <img src="./images/CreditCard.png" alt="">
+      </div>
+      <h1>Company Card</h1>
+      <div class="cardImage" data-card="company" onclick="showCard(this)">
+        <img src="./images/CompanyCard.png" alt="">
+      </div>
     </div>
     <div class="container">
-      <div class="card">
-        <div id="sald">
-          <h1>R$ 0.0</h1>
+      <div class="infoCardContainer">
+        <div class="infCard">
+          <div id="sald">
+            <h1>R$ 0.0</h1>
+          </div>
+          <div class="buttons"> 
+            <div><box-icon name='up-arrow-alt' color="white" ></box-icon> TRANSFER</div>
+            <div><box-icon name='down-arrow-alt' color="white" size="sm"></box-icon> REQUEST</div>
+          </div>
+          <div class="values" style="margin-top: 40px;">
+            <div> Income <br> <span id="divida"> $ 0.0</span></div>
+            <div> Outcome <br> <span id="sobra"> $ 0.0</span></div>
+          </div>
         </div>
-        <div class="buttons"> 
-          <div><box-icon name='up-arrow-alt' color="white" ></box-icon> TRANSFER</div>
-          <div><box-icon name='down-arrow-alt' color="white" size="sm"></box-icon> REQUEST</div>
-        </div>
-        <div class="values" style="margin-top: 40px;">
-          <div> Income <br> <span id="divida"> $ 0.0</span></div>
-          <div> Outcome <br> <span id="sobra"> $ 0.0</span></div>
+        <div class="currentCard">
+
         </div>
       </div>
       <div class="graphs">
