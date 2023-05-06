@@ -4,7 +4,7 @@ const expensesEl = document.querySelector('#divida');
 const listEl = document.querySelector('.list');
 const barEl = document.querySelector('.bar');
 const transactionsEl = document.querySelector('.transactions')
-const transactionsList = document.querySelector('.transactionsList')
+const transactionsListEl = document.querySelector('.transactionsList')
 const CurrentCardEl = document.querySelector('.currentCard')
 
 const spending = [
@@ -18,20 +18,33 @@ const spending = [
   {type: "Others", percentDebit: "12", percentCredit: "8", percentCompany: "30", color: '#DCDCDC'}
 ];
 
-const transactions = [
-  {company:"Uber", date:"Apr 11, 2023, 16:35 PM", category:"Transport", value:"$ 12.75"},
-  {company:"Latam Airlines", date:"Apr 9, 2023, 8:35 AM", category:"Travel", value:"$ 465.00"},
-  {company:"Domino's Pizza", date:"Apr 9, 2023, 13:12 PM", category:"Restaurant", value:"$ 68.25"},
-  {company:"Angeloni", date:"Apr 8, 2023, 11:23 AM", category:"Market", value:"$ 268.10"}
-
+const transactionsDebit = [
+  {company:"Uber", date:"Mai 11, 2023, 16:35 PM", category:"Transport", value:"$ 12.75"},
+  {company:"Latam Airlines", date:"Mai 9, 2023, 8:35 AM", category:"Travel", value:"$ 210.00"},
+  {company:"Domino's Pizza", date:"Mai 9, 2023, 13:12 PM", category:"Restaurant", value:"$ 68.25"},
+  {company:"Angeloni", date:"Mai 8, 2023, 11:23 AM", category:"Market", value:"$ 268.10"}
 ]
-const icons = [
-  `<box-icon type='solid' name='car'></box-icon>`,
-  `<box-icon type='solid' name='plane-alt'></box-icon>`,
-  `<box-icon name='restaurant'></box-icon>`,
-  `<box-icon name='store-alt' type='solid' ></box-icon>`
+const transactionsCredit = [
+  {company:"Netflix", date:"Mai 3, 2023, 16:35 PM", category:"Entertainment ", value:"$ 79.90"},
+  {company:"Paris 6", date:"Mai 7, 2023, 11:48 AM", category:"Restaurant", value:"$ 120.00"},
+  {company:"Taxi", date:"Mai 5, 2023, 14:55 PM", category:"Transport", value:"$ 80.00"},
+  {company:"Amazon", date:"Mai 1, 2023, 09:13 AM", category:"Market", value:"$ 250.0"}
 ]
-
+const transactionsCompany = [
+  {company:"Electricity Bill", date:"Mai 3, 2023, 16:35 PM", category:"Others ", value:"$ 822.40"},
+  {company:"Tax", date:"Mai 7, 2023, 11:48 AM", category:"Tax", value:"$ 250.00"},
+  {company:"Transfer", date:"Mai 5, 2023, 14:55 PM", category:"Others", value:"$ 900.00"},
+  {company:"Transfer", date:"Mai 1, 2023, 09:13 AM", category:"Others", value:"$ 650.20"}
+]
+const iconsDebit = [
+  `<box-icon type='solid' name='car'></box-icon>`,`<box-icon type='solid' name='plane-alt'></box-icon>`,`<box-icon name='restaurant'></box-icon>`,`<box-icon name='store-alt' type='solid' ></box-icon>`
+]
+const iconsCredit = [
+  `<box-icon name='tv'></box-icon>`,`<box-icon name='restaurant'></box-icon>`,`<box-icon type='solid' name='car'></box-icon>`,`<box-icon name='store-alt' type='solid' ></box-icon>`,
+]
+const iconsCompany = [
+  `<box-icon name='barcode'></box-icon>`,`<box-icon name='barcode'></box-icon>`,`<box-icon name='transfer-alt'></box-icon>`,`<box-icon name='transfer-alt'></box-icon>`,
+]
 
 const percentsDebit = spending.map(({percentDebit}) => parseInt(percentDebit, 10));
 const percentsCredit = spending.map(({percentCredit}) => parseInt(percentCredit, 10));
@@ -63,6 +76,11 @@ const expensesCompanyCard = percentsCompany.map((arr)=>{return expenseCompanyCar
 function createExtract() {
   walletValues(balance, remainingBalance, expenseDebitTotal)
   printExpenses(expensesDebit, percentsDebit);
+  printTransactions(transactionsDebit, iconsDebit);
+  if(myChart != null){
+    myChart.destroy()
+  }
+  Graph(thisWeekSpendingsDebit, lastWeekSpendingsDebit)
 }
 
 const debitCardImage = "url(./images/DebitCard.png)"
@@ -105,8 +123,8 @@ function printExpenses(expenses,percents) {
   }
 }
 
-function createTransactions(){
-  transactionsList.innerHTML = ""
+function printTransactions(transactions, icons){
+  transactionsListEl.innerHTML = ""
   
   for(let i = 0; i < transactions.length; i++){
     const textTransactions = document.createElement('li'); 
@@ -117,38 +135,28 @@ function createTransactions(){
       <p>${transactions[i].category}</p>
        <p>${transactions[i].value}</p>`
 
-      transactionsList.appendChild(textTransactions);
+      transactionsListEl.appendChild(textTransactions);
   }
 }
 
 function showCard(card){
   const cardType = card.getAttribute("data-card")
   if(cardType === "debit"){
-    walletValues(balance, remainingBalance, expenseDebitTotal, debitCardImage)
-    printExpenses(expensesDebit, percentsDebit);
-    createTransactions()
-
-    if(myChart != null){
-      myChart.destroy()
-    }
-    Graph(thisWeekSpendingsDebit, lastWeekSpendingsDebit)
-
-    
+    createExtract()
   }
   if(cardType === "credit"){
     walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance, creditCardImage)
     printExpenses(expensesCredit, percentsCredit);
-    
+    printTransactions(transactionsCredit, iconsCredit)
     if(myChart != null){
       myChart.destroy()
     }
     Graph(thisWeekSpendingsCredit, lastWeekSpendingsCredit)
-    
   }
   if(cardType === "company"){
     walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance, companyCardImage)
     printExpenses(expensesCompanyCard, percentsCompany )
-
+    printTransactions(transactionsCompany,iconsCompany)
     if(myChart != null){
       myChart.destroy()
     }
