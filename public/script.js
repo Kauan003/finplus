@@ -73,16 +73,6 @@ const expenseCompanyCardTotal = getSald(12000, 16000);
 const remainingCompanyCardBalance = balanceCompanyCard - expenseCompanyCardTotal; 
 const expensesCompanyCard = percentsCompany.map((arr)=>{return expenseCompanyCardTotal * arr /100})
 
-function createExtract() {
-  walletValues(balance, remainingBalance, expenseDebitTotal)
-  printExpenses(expensesDebit, percentsDebit);
-  printTransactions(transactionsDebit, iconsDebit);
-  if(myChart != null){
-    myChart.destroy()
-  }
-  Graph(thisWeekSpendingsDebit, lastWeekSpendingsDebit)
-}
-
 const debitCardImage = "url(./images/DebitCard.png)"
 const creditCardImage = "url(./images/creditCard.png)"
 const companyCardImage = "url(./images/companyCard.png)"
@@ -134,7 +124,6 @@ function printTransactions(transactions, icons){
      <p>${transactions[i].date}</p>
       <p>${transactions[i].category}</p>
        <p>${transactions[i].value}</p>`
-
       transactionsListEl.appendChild(textTransactions);
   }
 }
@@ -142,26 +131,43 @@ function printTransactions(transactions, icons){
 function showCard(card){
   const cardType = card.getAttribute("data-card")
   if(cardType === "debit"){
-    createExtract()
+    debitAccount()
   }
   if(cardType === "credit"){
-    walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance, creditCardImage)
+    creditAccount()
+  }
+  if(cardType === "company"){
+    companyAccount()
+  }
+}
+
+function debitAccount() {
+  walletValues(balance, remainingBalance, expenseDebitTotal)
+  printExpenses(expensesDebit, percentsDebit);
+  printTransactions(transactionsDebit, iconsDebit);
+  if(myChart != null){
+    myChart.destroy()
+  }
+  Graph(thisWeekSpendingsDebit, lastWeekSpendingsDebit)
+}
+
+function creditAccount(){
+  walletValues(balanceCredit, expenseCreditTotal, remainingCreditBalance, creditCardImage)
     printExpenses(expensesCredit, percentsCredit);
     printTransactions(transactionsCredit, iconsCredit)
     if(myChart != null){
       myChart.destroy()
     }
     Graph(thisWeekSpendingsCredit, lastWeekSpendingsCredit)
-  }
-  if(cardType === "company"){
-    walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance, companyCardImage)
+}
+function companyAccount(){
+  walletValues(balanceCompanyCard, expenseCompanyCardTotal, remainingCompanyCardBalance, companyCardImage)
     printExpenses(expensesCompanyCard, percentsCompany )
     printTransactions(transactionsCompany,iconsCompany)
     if(myChart != null){
       myChart.destroy()
     }
     Graph(thisWeekSpendingsCompany, lastWeekSpendingsCompany)
-  }
 }
 
 //GRAPHS

@@ -22,9 +22,7 @@ body{
     display: table-column;
 
 }
-.containerBar div {
-    height: 100px;
-}
+
 .containerBar ul {
     height: 300px;
 }
@@ -32,13 +30,12 @@ body{
 {
     list-style: none;
     cursor: pointer;
-    font-size: 1.6em;
     align-items: center;
     display: flex;
     margin-left: 40px;
 }
 
-.containerBar li button{
+.containerBar button{
     width:100%;
     padding: 15px;
     border: none;
@@ -52,19 +49,35 @@ body{
     width: 320px;
     height: 250px;
 }
+.cardsdisplay {
+    font-size: 13px;
+    font-weight: 550;
+    margin-top: 5px;
+}
+.cardsdisplay summary{
+    display: flex;
+    text-align: center;
+    width: 200px;
+
+}
+.cardsdisplay summary span {
+    margin-left: 15px
+}
+.cardsdisplay li span{
+   margin-left: 10px
+}
+
 .grid
 {
     width: 80%;
     height: 773px;
     display: grid;
     grid-template-columns:30% 70%;
-
 }
 .cards {
     border-right: 1px solid rgb(231, 231, 231);
     display:grid;
     justify-content: center;
-    
 }
 .cards h1 {
     font-size: 1.3em;
@@ -150,6 +163,7 @@ body{
    justify-content: center;
     
 }
+
 .values
 {
     color: white;

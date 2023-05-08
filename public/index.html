@@ -16,21 +16,35 @@
       <ul>
         <li>
           <box-icon name='credit-card-front' color="white"></box-icon>
-          <button onclick="createExtract()">Simulate Account</button>
+          <button onclick="debitAccount()">Simulate Account</button>
         </li>
         <li>
           <box-icon type='solid' name='bar-chart-alt-2' color="white"></box-icon>
-          <button onclick="createGraph()">Graphs</button>
+          <button onclick="showGraph()">Graphs</button>
         </li>
         <li>
           <box-icon name='transfer' color="white"></box-icon>
-          <button onclick="createTransactions()">Transactions</button>
+          <button onclick="showTransactions()">Transactions</button>
         </li>
-        <li>
-          <box-icon name='credit-card-alt' color="white"></box-icon>
-          <button>Cards</button>
+        <li >
+          <details class="cardsdisplay" >
+            <summary><box-icon name='credit-card-alt' color="white"></box-icon>
+                <span>Cards</span>
+            </summary>
+              <li onclick="debitAccount()">
+                <box-icon name='credit-card-alt' type='solid' color="white" ></box-icon>
+                <span>Debit</span>
+              </li>
+              <li onclick="creditAccount()">
+                <box-icon name='credit-card-alt' type='solid' color="white" ></box-icon>
+                <span>Credit</span>
+              </li>
+              <li onclick="companyAccount()">
+                <box-icon name='credit-card-alt' type='solid' color="white" ></box-icon>
+                <span>Company</span>
+              </li>
+          </details>
         </li>
-
       </ul>
       <div>
         <img src="./images/fpluss.png" alt="">
