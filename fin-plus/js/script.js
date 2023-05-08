@@ -73,9 +73,9 @@ const expenseCompanyCardTotal = getSald(12000, 16000);
 const remainingCompanyCardBalance = balanceCompanyCard - expenseCompanyCardTotal; 
 const expensesCompanyCard = percentsCompany.map((arr)=>{return expenseCompanyCardTotal * arr /100})
 
-const debitCardImage = "url(./images/DebitCard.png)"
-const creditCardImage = "url(./images/creditCard.png)"
-const companyCardImage = "url(./images/companyCard.png)"
+const debitCardImage = "url(./fin-plus/images/DebitCard.png)"
+const creditCardImage = "url(./fin-plus/images/creditCard.png)"
+const companyCardImage = "url(./fin-plus/images/companyCard.png)"
 
 function walletValues(balance, remainingBalance, expenseTotal, cardImage){
   CurrentCardEl.style.backgroundImage= debitCardImage
