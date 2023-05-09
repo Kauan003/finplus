@@ -78,7 +78,6 @@ const creditCardImage = "url(./fin-plus/images/creditCard.png)"
 const companyCardImage = "url(./fin-plus/images/companyCard.png)"
 
 function walletValues(balance, remainingBalance, expenseTotal, cardImage){
-  CurrentCardEl.style.backgroundImage= debitCardImage
   CurrentCardEl.style.backgroundImage= cardImage
   balanceEl.innerHTML = `<h1>$ ${balance}.00 </h1>`;
   expensesEl.innerHTML = `$ ${expenseTotal}.00`;
@@ -142,7 +141,7 @@ function showCard(card){
 }
 
 function debitAccount() {
-  walletValues(balance, remainingBalance, expenseDebitTotal)
+  walletValues(balance, remainingBalance, expenseDebitTotal, debitCardImage)
   printExpenses(expensesDebit, percentsDebit);
   printTransactions(transactionsDebit, iconsDebit);
   if(myChart != null){
